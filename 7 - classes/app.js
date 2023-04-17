@@ -1,22 +1,17 @@
 function create(name, goals) {
   
-  let player = Object.create(playerMethods)
-  player.name = name;
-  player.goals = goals;
-  return player;
+  // What new does
+  //1 - let obj = {}
+  //2 - this = obj
+  //3 - this.__proto__ = create.prototype
+  //4 - return obj
+  this.name = name;
+  this.goals = goals;
 }
 
-var playerMethods = {
-  log: function() {
-    console.log(this.name, ' possui ', this.goals, ' gols em sua carreira.');
-  }
+create.prototype.log = function() {
+  console.log(`Goals: ${this.goals}`)
 }
 
- 
- 
- var gabigol = create('gabigol', 500);
- gabigol.log();
- 
- 
- var dudu = create('dudu', 100);
- dudu.log();
+var gabigol = new create('gabigol',1000);
+gabigol.log();
